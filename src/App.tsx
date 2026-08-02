@@ -74,6 +74,7 @@ export default function App() {
   const [musicOn, setMusicOn] = useState(true);
   const [sfxOn, setSfxOn] = useState(true);
   const [fullscreen, setFullscreen] = useState(false);
+  const [showInfo, setShowInfo] = useState(false);
   const [scale, setScale] = useState(1);
   const lastMatchTime = useRef(0);
 
@@ -401,12 +402,35 @@ export default function App() {
               className="rounded-xl border border-white/10 bg-black/40 px-4 py-2.5 text-sm text-zinc-300 hover:border-amber-400/50 hover:text-amber-300 transition-colors">
               ⛶ {fullscreen ? 'Quitter le plein écran' : 'Plein écran'}
             </button>
+            <button onClick={() => setShowInfo(true)} title="Comment ce jeu a été fait"
+              className="rounded-xl border border-white/10 bg-black/40 px-4 py-2.5 text-sm text-zinc-300 hover:border-amber-400/50 hover:text-amber-300 transition-colors">
+              ℹ️ Infos
+            </button>
           </div>
         </div>
 
         <footer className="pb-5 text-center text-xs text-zinc-500">
           Créé par <span className="text-amber-400/80 font-medium">Hylst, Geoffroy</span>, avec l'aide d'une IA
         </footer>
+
+        {showInfo && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4" onClick={() => setShowInfo(false)}>
+            <div className="w-full max-w-lg max-h-[85vh] overflow-y-auto rounded-2xl border border-amber-400/20 bg-black/90 backdrop-blur-sm shadow-2xl" onClick={e => e.stopPropagation()}>
+              <div className="p-6 space-y-3.5 text-sm leading-relaxed text-zinc-300">
+                <h3 className="text-xl font-bold font-serif text-amber-300">Comment ce jeu a été fait</h3>
+                <p><strong className="text-white">Stack :</strong> React 19, TypeScript 5.9, Tailwind CSS 4, Vite 7, compilé en un seul fichier HTML, aucune dépendance chargée depuis l'extérieur.</p>
+                <p><strong className="text-white">Graphismes :</strong> tuiles en DOM/CSS positionnées en 3D par calcul (décalage horizontal et vertical selon la hauteur d'empilement), aucun Canvas.</p>
+                <p><strong className="text-white">Musique &amp; sons :</strong> synthétisés en direct avec l'API Web Audio, aucun fichier audio chargé.</p>
+                <p><strong className="text-white">Interactions :</strong> clic pour sélectionner puis apparier deux tuiles libres identiques, indice et mélange disponibles contre des points, annulation du dernier coup.</p>
+                <p><strong className="text-white">Architecture :</strong> la disposition des 5 plateaux est déclarative (positions 3D pures dans <code>layouts.ts</code>), totalement séparée du rendu React.</p>
+                <p><strong className="text-white">Algorithmes notables :</strong> une tuile est « libre » si aucune tuile n'est empilée juste au-dessus et qu'au moins un de ses côtés gauche ou droit est dégagé, règle classique du mahjong solitaire. Chaque plateau est généré à l'envers : les paires sont retirées virtuellement une à une tant qu'elles sont libres, puis l'ordre est inversé pour obtenir une distribution garantie solvable du début à la fin.</p>
+              </div>
+              <div className="border-t border-white/10 p-4 text-center">
+                <button onClick={() => setShowInfo(false)} className="px-6 py-2.5 rounded-xl font-semibold bg-gradient-to-br from-amber-400 to-orange-500 text-black hover:brightness-110 active:scale-95 transition-all">Fermer</button>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     );
   }

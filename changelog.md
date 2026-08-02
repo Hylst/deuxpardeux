@@ -3,6 +3,19 @@
 Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/), versionnage
 [SemVer](https://semver.org/lang/fr/).
 
+## [1.1.0] 2026-08-02
+
+### Ajouté
+- Modale « ℹ️ Infos » (bouton dans l'écran de sélection de niveau) expliquant la stack,
+  les graphismes, la musique, les interactions, l'architecture et les algorithmes notables
+  (règle du mahjong pour une tuile « libre », génération de plateau à l'envers pour
+  garantir la solvabilité). Étape 15 du chantier de retrofit décrit dans `todo.md` racine
+  du monorepo.
+
+### Vérifié
+- Build propre, modale testée à l'ouverture/fermeture, aucune erreur console, aucun
+  débordement horizontal en 390×844 (écran de menu et écran de jeu).
+
 ## [1.0.0] 2026-07-31
 
 Première version intégrable à Hylst.Games, partie d'un export brut audité puis corrigé.
