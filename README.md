@@ -1,6 +1,6 @@
 # Deux par Deux
 
-**Le solitaire de tuiles. Cinq plateaux, toujours résolvables.**
+**Le solitaire de tuiles. Cinq plateaux, générés pour être résolvables.**
 
 Joue ici : [games.hylst.fr/deuxpardeux/](https://games.hylst.fr/deuxpardeux/)
 

@@ -99,3 +99,8 @@ type vide. La génération par placement inverse garantit bien un plateau résol
   mais un simple compteur suffirait puisque seul `.length` est utilisé en dehors de l'indice
 - [ ] Aucun test automatisé embarqué sur `isFreeAt` / `assignSolvable`, alors que ce sont des
   fonctions pures faciles à couvrir
+
+## Audit du 27/11/2026
+
+- [ ] Prouver la résolvabilité des 5 plateaux sur 1000 mélanges, puis supprimer le repli aléatoire si nécessaire.
+- [ ] Documenter l'origine de `src/assets/bg.jpg` ou le remplacer par un fond CSS.
